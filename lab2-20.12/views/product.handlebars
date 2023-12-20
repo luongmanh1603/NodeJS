@@ -1,0 +1,11 @@
+<h1>Product</h1>
+{{#if products.length}}
+    {{#each products}}
+        <div class="product">
+            <img src="{{image}}" alt="{{name}}">
+            <p>{{name}}</p>
+        </div>
+    {{/each}}
+{{else}}
+    <p>No products available.</p>
+{{/if}}

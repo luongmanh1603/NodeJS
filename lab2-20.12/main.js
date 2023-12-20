@@ -2,25 +2,33 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars').engine;
 const app = express()
 
-
 //configure Handlebars view engine
 app.engine('handlebars', expressHandlebars({
     defaultlayout: 'main'
 }))
 app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'));
-
 const port = process.env.port || 3000
+
 app.get('/', (req, res) => res.render('home'))
-app.get('/about', (req, res)=> res.render('about'))
+app.get('/about', (req, res) => res.render('about'))
+
+
+const products = [
+    { name: 'Product 1', image: '/img/product1.png'},
+    { name: 'Product 2', image: '/img/product2.png'},
+
+]
+app.get('/product', (req, res) => res.render('product', { products }))
+
 
 
 
 // custom 404 page
 app.use((req, res)=> {
-    
+    res.type('text/plain')
     res.status(404)
-    res.render('404')
+    res.send('404 - Not found from LVM')
 })
 //custom 500 page
 app.use((err, req, res, next)=> {
