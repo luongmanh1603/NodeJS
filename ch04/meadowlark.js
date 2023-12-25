@@ -1,8 +1,6 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars').engine;
 const app = express()
-const port = process.env.port || 3000
-
 
 //configure Handlebars view engine
 app.engine('handlebars', expressHandlebars({
@@ -10,21 +8,21 @@ app.engine('handlebars', expressHandlebars({
 }))
 app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'));
+const port = process.env.port || 3000
 
 app.get('/', (req, res) => res.render('home'))
-app.get('/about', (req, res) => res.render('about'))
 
-
-const products = [
-    { name: 'Product 1', image: '/img/product1.png'},
-    { name: 'Product 2', image: '/img/product2.png'},
-
+const fortunes = [
+    "Conquer your fears or they will conquer you.",
+    "Rivers need springs.",
+    "Do not fear what you don't know",
+    "You will have a pleasant surprise",
+    "Whenever possible, keep it simple",
 ]
-app.get('/product', (req, res) => res.render('product', { products }))
-
-
-
-
+app.get('/about',(req,res)=>{
+    const randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)]
+    res.render('about', {fortune: randomFortune})
+})
 // custom 404 page
 app.use((req, res)=> {
     res.type('text/plain')
