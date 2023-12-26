@@ -6,7 +6,7 @@ const port = process.env.port || 3000
 
 //configure Handlebars view engine
 app.engine('handlebars', expressHandlebars({
-    defaultLayout: 'main'
+    defaultLayout: 'custom'
 }))
 app.set('view engine', 'handlebars')
 
