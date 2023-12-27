@@ -1,0 +1,23 @@
+ <form action="/feedback" method="post">
+
+           <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+
+
+           <label for="comments">Feedback of you</label>
+            <textarea id="comments" name="comments" rows="4"></textarea>
+            <label for="satisfaction">How satisfied are you?</label>
+            <input type="radio" id="happy" name="satisfaction" value="happy" required>
+            <label for="happy">Happy</label>
+
+            <input type="radio" id="unhappy" name="satisfaction" value="unhappy" required>
+            <label for="unhappy">Unhappy</label>
+
+           
+
+            <button type="submit">Submit Feedback</button>
+        </form>
